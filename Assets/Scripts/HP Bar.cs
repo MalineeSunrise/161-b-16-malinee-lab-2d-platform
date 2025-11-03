@@ -20,9 +20,7 @@ public class HPBar : MonoBehaviour
         }
     }
     void Update()
-        {
-        Debug.Log("HPBar Update is running...");
-
+    {
         if (_characterTarget != null && sliderHP != null)
         {
            float t = _characterTarget.CalculateHealth();
