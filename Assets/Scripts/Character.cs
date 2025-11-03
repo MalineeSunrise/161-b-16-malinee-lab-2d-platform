@@ -1,9 +1,14 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 public class Character : MonoBehaviour
 {
-    private int hearlth;
-    public int Health
+    [SerializeField] public float CurrentHealth { get; private set; }
+    [SerializeField] private float MaxHp = 100f;
+
+    private float hearlth;
+    public float Health
     {
         get { return hearlth; }
         set { hearlth = (value < 0) ? 0 : value; }
@@ -19,6 +24,8 @@ public class Character : MonoBehaviour
 
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
+
     }
 
     public void TakeDamage(int damage)
@@ -27,6 +34,11 @@ public class Character : MonoBehaviour
         Debug.Log($"{this.name} took damage {damage} Current hearlth {Health}");
 
         IsDead();
+
+        if (CurrentHealth < 0)
+            CurrentHealth = 0;
+
+        CurrentHealth = Health;
     }
 
     public bool IsDead()
@@ -37,6 +49,11 @@ public class Character : MonoBehaviour
             return true;
         }
         else { return false; }
+    }
+
+    public float CalculateHealth()
+    {
+        return Health / MaxHp;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -50,4 +67,5 @@ public class Character : MonoBehaviour
     {
         
     }
+
 }

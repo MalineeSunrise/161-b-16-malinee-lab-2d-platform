@@ -9,7 +9,7 @@ public class Ant : Enemy
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        base.intialize(20);
+        base.intialize(50);
 
         DamageHit = 20;
         velocity = new Vector2(-1.0f, 0.0f);

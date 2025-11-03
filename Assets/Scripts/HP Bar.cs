@@ -1,16 +1,34 @@
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class HPBar : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private Slider sliderHP;
+
+    [SerializeField] private Character target;
+    [SerializeField] private Character _characterTarget;
+
     void Start()
     {
-        
-    }
+        if (target == null)
+        {
+            target = GetComponent<Character>();
 
-    // Update is called once per frame
+            if (target == null)
+                target = GetComponentInParent<Character>();
+        }
+    }
     void Update()
-    {
-        
+        {
+        Debug.Log("HPBar Update is running...");
+
+        if (_characterTarget != null && sliderHP != null)
+        {
+           float t = _characterTarget.CalculateHealth();
+
+
+           sliderHP.value = t;
+        }
     }
 }

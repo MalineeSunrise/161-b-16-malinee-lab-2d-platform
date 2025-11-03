@@ -15,8 +15,8 @@ public class Crocodile : Enemy, IShootable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        base.intialize(50);
-        DamageHit = 30;
+        base.intialize(80);
+        DamageHit = 25;
 
         attackRange = 6.0f;
         player = GameObject.FindFirstObjectByType<Player>();
