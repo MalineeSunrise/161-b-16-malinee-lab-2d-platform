@@ -5,6 +5,8 @@ public class Rock : Weapon
     public Rigidbody2D rb;
     public Vector2 force;
 
+    private bool hasHit = false;
+
     public override void Move()
     {
         rb.AddForce(force);
@@ -15,6 +17,8 @@ public class Rock : Weapon
         if (obj is Player)
         {
             obj.TakeDamage(this.damage);
+            hasHit = true; 
+            Destroy(gameObject);
         }
     }
 
